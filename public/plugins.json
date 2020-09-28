@@ -1,0 +1,13 @@
+[
+  {
+    "name": "plugin-kaptea-test",
+    "version": "0.0.0",
+    "class": "KapteaTestPlugin",
+    "requires": [
+      {
+        "@twilio/flex-ui": "^1"
+      }
+    ],
+    "src": "http://localhost:3000/plugin-kaptea-test.js"
+  }
+]
