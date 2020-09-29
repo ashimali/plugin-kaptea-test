@@ -24,23 +24,11 @@ class SFData extends React.Component {
     this.getCustomerData();
   }
 
-  // retrieve customer data using the Twilio function as a proxy to Salesforce
+  // retrieve customer data using a Twilio function as a proxy to Salesforce
   getCustomerData() {
     const { task, manager} = this.props;
 
     if (task) {
-
-      // Check that there is a selected task then you can call the real
-      // sf lookup function passing in caller number but for
-      // now use dummy function which returns canned but realistic data
-      // Note as well that we'll eventually need to use a POST and provide
-      // the users auth token
-
-      // To get user token do this
-      //const token = manager.store.getState().flex.session.ssoTokenPayload.token;
-
-      // Create options for the post. Use token - get caller number from task attributes
-      // then update the below to post to sf-lookup twilio function
 
       // Get the user's auth token to include in the request body for authentication
       const token = manager.store.getState().flex.session.ssoTokenPayload.token
