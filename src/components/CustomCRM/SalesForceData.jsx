@@ -35,6 +35,12 @@ class SFData extends React.Component {
       // Note as well that we'll eventually need to use a POST and provide
       // the users auth token
 
+      // To get user token do this
+      //const token = manager.store.getState().flex.session.ssoTokenPayload.token;
+
+      // Create options for the post. Use token - get caller number from task attributes
+      // then update the below to post to sf-lookup twilio function
+
       fetch(dummyFunctionURL)
         .then((response) => {
           if (response.ok) {

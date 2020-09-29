@@ -31,7 +31,7 @@ export default class KapteaTestPlugin extends FlexPlugin {
 
     flex.AgentDesktopView.Panel2.Content.remove('container');
 
-    flex.AgentDesktopView.Panel2.Content.add(<CustomCRM key="custom_crm" />);
+    flex.AgentDesktopView.Panel2.Content.add(<CustomCRM key="custom_crm" manager={manager} />);
 
   }
 

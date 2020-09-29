@@ -4,7 +4,7 @@ import { CustomCRMContainer } from './CustomCRM.Styles';
 import SFData from './SalesForceData';
 
 function CustomCRM(props) {
-  const { task } = props;
+  const { task, manager} = props;
 
   // build the CRM content based on whether a Task is selected
   let content;
@@ -20,7 +20,7 @@ function CustomCRM(props) {
       content = (
         <div>
           <p>Custom CRM</p>
-          <SFData />
+          <SFData manager={manager}/>
         </div>
     );
   }
