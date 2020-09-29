@@ -2,8 +2,8 @@ import React from 'react';
 import { withTaskContext } from '@twilio/flex-ui';
 
 
-// This dummy url is a placeholder for sf-lookup function
-const dummyFunctionURL = 'https://raw.githubusercontent.com/EncludeLtd/sf-flex/master/response.json';
+// TODO update do your function url
+const sfLookUpURL = "https://maize-turtle-3606.twil.io/sf-lookup";
 
 
 class SFData extends React.Component {
@@ -26,8 +26,9 @@ class SFData extends React.Component {
 
   // retrieve customer data using the Twilio function as a proxy to Salesforce
   getCustomerData() {
+    const { task, manager} = this.props;
 
-    if (this.props.task) {
+    if (task) {
 
       // Check that there is a selected task then you can call the real
       // sf lookup function passing in caller number but for
@@ -41,7 +42,26 @@ class SFData extends React.Component {
       // Create options for the post. Use token - get caller number from task attributes
       // then update the below to post to sf-lookup twilio function
 
-      fetch(dummyFunctionURL)
+      // Get the user's auth token to include in the request body for authentication
+      const token = manager.store.getState().flex.session.ssoTokenPayload.token
+      const phoneNumber = this.props.task.caller
+
+      // request body
+      const body = {
+        Token: token,
+        phoneNumber: phoneNumber
+      };
+
+      // Set up the HTTP options for your request
+      const options = {
+        method: 'POST',
+        body: new URLSearchParams(body),
+        headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        }
+      };
+
+      fetch(sfLookUpURL, options)
         .then((response) => {
           if (response.ok) {
             return response.json();
