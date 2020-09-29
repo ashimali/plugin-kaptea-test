@@ -28,9 +28,13 @@ class SFData extends React.Component {
   getCustomerData() {
 
     if (this.props.task) {
+
       // Check that there is a selected task then you can call the real
       // sf lookup function passing in caller number but for
       // now use dummy function which returns canned but realistic data
+      // Note as well that we'll eventually need to use a POST and provide
+      // the users auth token
+
       fetch(dummyFunctionURL)
         .then((response) => {
           if (response.ok) {
