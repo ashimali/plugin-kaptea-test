@@ -17,6 +17,8 @@ exports.handler = TokenValidator(function(context, event, callback) {
     response.appendHeader('Access-Control-Allow-Headers', 'Content-Type');
     response.appendHeader('Content-Type', 'application/json');
 
+    console.log('Get user data for:', phoneNumber);
+
     getData();
 
     function getData() {

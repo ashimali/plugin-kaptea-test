@@ -32,7 +32,7 @@ class SFData extends React.Component {
 
       // Get the user's auth token to include in the request body for authentication
       const token = manager.store.getState().flex.session.ssoTokenPayload.token
-      const phoneNumber = this.props.task.caller
+      const phoneNumber = task.attributes.caller;
 
       // request body
       const body = {
