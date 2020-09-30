@@ -14,6 +14,20 @@ class SFData extends React.Component {
     this.state = {
       name: undefined,
       email: undefined,
+      membershipType: undefined,
+      externalId: undefined,
+      chillStatus: undefined,
+      bonusDonationType: undefined,
+      affiliateRole: undefined,
+      companyName: undefined,
+      phone: undefined,
+      baseUrl: undefined,
+      accountUrl: undefined,
+      companyCity: undefined,
+      companyCountry: undefined,
+      companyPostalCode: undefined,
+      companyState: undefined,
+      companyStreet: undefined,
     };
 
     // bind `this` so that it can be used from inside getCustomerData()
@@ -62,8 +76,22 @@ class SFData extends React.Component {
         .then((data) => {
           // Pick out required data from the json returned from the function
           this.setState({
-              name: data.records.Contact[0].Name,
-              email: data.records.Contact[0].Email,
+              name: data.name,
+              email: data.email,
+              membershipType: data.membershipType,
+              externalId: data.externalId,
+              chillStatus: data.chillStatus,
+              bonusDonationType: data.bonusDonationType,
+              affiliateRole: data.affiliateRole,
+              companyName: data.companyName,
+              phone: data.phone,
+              baseUrl: data.baseUrl,
+              accountUrl: data.accountUrl,
+              companyCity: data.companyCity,
+              companyCountry: data.companyCountry,
+              companyPostalCode: data.companyPostalCode,
+              companyState: data.companyState,
+              companyStreet: data.companyStreet,
             });
         })
         .catch((error) => {
@@ -75,12 +103,26 @@ class SFData extends React.Component {
   }
 
   render() {
-    const { name, email} = this.state;
+    const { name, email, membershipType, externalId, chillStatus, bonusDonationType, affiliateRole, companyName, phone, baseUrl, accountUrl, companyCity, companyCountry, companyPostalCode, companyState, companyStreet} = this.state;
     return (
       <div>
         <h2>Contact details</h2>
         <p>{name}</p>
         <p>{email}</p>
+        <p>{membershipType}</p>
+        <p>{externalId}</p>
+        <p>{chillStatus}</p>
+        <p>{bonusDonationType}</p>
+        <p>{affiliateRole}</p>
+        <p>{companyName}</p>
+        <p>{phone}</p>
+        <p>{baseUrl}</p>
+        <p>{accountUrl}</p>
+        <p>{companyCity}</p>
+        <p>{companyCountry}</p>
+        <p>{companyPostalCode}</p>
+        <p>{companyState}</p>
+        <p>{companyStreet}</p>
       </div>
     );
   }
