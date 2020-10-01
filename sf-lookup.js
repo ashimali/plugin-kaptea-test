@@ -1,5 +1,7 @@
 var querystring = require('querystring');
 var request = require('request');
+var get = require('lodash/get');
+
 const TokenValidator = require('twilio-flex-token-validator').functionValidator;
 
 exports.handler = TokenValidator(function(context, event, callback) {
@@ -44,51 +46,25 @@ exports.handler = TokenValidator(function(context, event, callback) {
 
     function buildContact(rawData) {
         let contact = {
-            name: null,
-            email: null,
-            membershipType: null,
-            externalId: null,
-            chillStatus: null,
-            bonusDonationType : null ,
-            affiliateRole: null,
-            companyName: null,
-            phone: null,
-            baseUrl: rawData.baseUrl,
-            accountUrl: null,
-            companyCity: null,
-            companyCountry: null,
-            companyPostalCode: null,
-            companyState: null,
-            companyStreet: null,
-        };
-        if (!rawData.records) {
-            return contact;
-        }
-        if (rawData.records.Contact && rawData.records.Contact[0]) {
-            let contactDetails = rawData.records.Contact[0];
-            contact.name = contactDetails.Name
-            contact.email = contactDetails.Email;
-            contact.affiliateRole = contactDetails.Prmary_Affiliation_Role__c;
-            contact.phone = contactDetails.Phone;
-        }
-        if (rawData.records.Account && rawData.records.Account[0]) {
-            let account = rawData.records.Account[0];
-            contact.membershipType = account.Membership_Type__c;
-            contact.externalId = account.Extenal_Id__c;
-            contact.chillStatus = account.Accpt_Chill__c;
-            contact.bonusDonationType = account.Bonus_Donation_Type__c;
-            contact.companyName = account.Name;
+            baseUrl: get(rawData, 'baseUrl', null),
 
-            if (rawData.records.Account[0].attributes) {
-                contact.accountUrl = rawData.records.Account[0].attributes.url;
-            }
-            if (rawData.records.Account[0].BillingAddress) {
-                let billing = rawData.records.Account[0].BillingAddress;
-                contact.companyCity = billing.city;
-                contact.companyCountry = billing.country;
-                contact.companyPostalCode = billing.postalCode;
-                contact.companyState = billing.state;
-                contact.companyStreet = billing.street;
+            name: get(rawData, 'records.Contact[0].Name', null),
+            email: get(rawData, 'records.Contact[0].Email', null),
+            phone: get(rawData, 'records.Contact[0].Phone', null),
+            affiliateRole: get(rawData, 'records.Contact[0].Prmary_Affiliation_Role__c', null),
+
+            membershipType: get(rawData, 'records.Account[0].Membership_Type__c', null),
+            externalId: get(rawData, 'records.Account[0].Extenal_Id__c', null),
+            chillStatus: get(rawData, 'records.Account[0].Accpt_Chill__c', null),
+            bonusDonationType : get(rawData, 'records.Account[0].Bonus_Donation_Type__c', null) ,
+            companyName: get(rawData, 'records.Account[0].Name', null),
+            accountUrl: get(rawData, 'records.Account[0].attributes.url', null),
+            companyCity: get(rawData, 'records.Account[0].BillingAddress.city', null),
+            companyCountry: get(rawData, 'records.Account[0].BillingAddress.country', null),
+            companyPostalCode: get(rawData, 'records.Account[0].BillingAddress.postalCode', null),
+            companyState: get(rawData, 'records.Account[0].BillingAddress.state', null),
+            companyStreet: get(rawData, 'records.Account[0].BillingAddress.street', null),
+
         }
         return contact;
     }
