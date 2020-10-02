@@ -1,0 +1,29 @@
+{
+    "externalId": "DONOR:123",
+    "organizationDetail": {
+        "organizationName": "Generous Donor",
+        "region": "North-East",
+        "groupOrganization": "Generous Donor Group IE",
+        "status": "Active",
+        "rules": "AM",
+        "reportingGroupName": "IE.GDG"
+    },
+    "locationDetail": {
+        "address": "Main Street, Mallow, Co. Limerick",
+        "addresscode": "P51 1AYZ",
+        "latitude": 52.13333,
+        "longitude": -8.63333
+    },
+    "contactDetail": {
+        "primaryContactName": "Duty Manager",
+        "primaryContactPhone": "+3530123456789",
+        "primaryContactEmail": "123@generousdonor.ie"
+    },
+    "donationDetail": {
+        "bonusDonationType": "ScheduledBonus",
+        "eSign": false,
+        "scheduleType": "Scheduled"
+    },
+    "timezone": "Europe/Dublin",
+    "rollover": "00:00"
+}

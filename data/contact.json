@@ -1,0 +1,11 @@
+[
+    {
+        "contactId": 12345,
+        "orgExternalId": "FS:123456",
+        "contactType": "phone",
+        "contactData": "+4470123456789",
+        "contactLabel": "Mr Chips",
+        "rank": 1,
+        "status": "Active"
+    }
+]

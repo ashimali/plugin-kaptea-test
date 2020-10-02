@@ -1,0 +1,36 @@
+{
+    "externalId": "CHARITY:123456",
+    "organizationDetail": {
+        "organizationName": "A charity",
+        "region": "Borsetshire",
+        "groupOrganization": "The charity group",
+        "status": "Active",
+        "rules": "",
+        "charityNumber": "charity-123456"
+    },
+    "locationDetail": {
+        "address": "12 Oak Lane",
+        "addresscode": "FX5 7HQ,
+        "latitude": 51.508039,
+        "longitude": -0.128069
+    },
+    "contactDetail": {
+        "primaryContactName": "Mr Chips",
+        "primaryContactPhone": "+4470123456789",
+        "primaryContactEmail": "chips@fish.com",
+        "primaryContactSms": "+4470123456789"
+    },
+    "donationDetail": {
+        "bonusDonationType": "Off",
+        "acceptChill": false,
+        "acceptFrozen": false,
+        "vehicleAccess": true,
+        "multiDonation": true,
+        "travelRadius": 25,
+        "minDonationWeight": 0,
+        "maxDonationWeight": 0,
+        "donationValidation": false,
+        "validationUnit": "kg"
+    },
+    "timezone": "Europe/London"
+}
