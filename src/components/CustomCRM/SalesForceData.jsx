@@ -1,8 +1,10 @@
 import React from 'react';
 import { withTaskContext } from '@twilio/flex-ui';
+import _ from 'lodash';
 
 
 // TODO update do your function url
+const copiaLookUpURL = "https://maize-turtle-3606.twil.io/copia-lookup";
 const sfLookUpURL = "https://maize-turtle-3606.twil.io/sf-lookup";
 
 
@@ -63,17 +65,17 @@ class SFData extends React.Component {
         }
       };
 
-      fetch(sfLookUpURL, options)
+      fetch(copiaLookUpURL, options)
         .then((response) => {
-          if (response.ok) {
             return response.json();
-          } else {
-            // throw an error if we received any error from the Function
-            console.error('CRM fetch failed, response:', response);
-            throw new Error('Failed to fetch from CRM');
-          }
-        })
-        .then((data) => {
+        }).then((data) => {
+           if(_.isEmpty(data)){
+              console.log('Contact not fouund in copia', data);
+              return fetch(sfLookUpURL, options).then((res) => {return res.json()});
+           } else {
+              return data;
+           }
+        }).then((data) => {
           // Pick out required data from the json returned from the function
           this.setState({
               name: data.name,
